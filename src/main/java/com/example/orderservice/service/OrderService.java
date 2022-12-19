@@ -29,7 +29,7 @@ public class OrderService {
         }
 
     }
-    @RabbitListener(queues = "UpdateQuantityCar")
+    @RabbitListener(queues = "AddOrder")
     public Boolean addOrder(Order order){
         try {
             orderRepository.save(order);

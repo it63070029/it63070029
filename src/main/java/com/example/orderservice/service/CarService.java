@@ -2,6 +2,7 @@ package com.example.orderservice.service;
 
 import com.example.orderservice.pojo.Car;
 import com.example.orderservice.repository.CarRepository;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,7 @@ public class CarService {
         }
 
     }
+    @RabbitListener(queues = "UpdateQuantityCar")
     public boolean updateQuantityCar(Car car) throws IOException {
         try {
             carRepository.save(car);
