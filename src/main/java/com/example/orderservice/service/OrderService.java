@@ -16,27 +16,37 @@ public class OrderService {
     private OrderRepository orderRepository;
 
 
-    public OrderService(OrderRepository orderRepository){
-        this.orderRepository=orderRepository;
+    public OrderService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
     }
 
-    public List<Order> getAllOrders(){
-        try{
+    public List<Order> getAllOrders() {
+        try {
             List<Order> orders = orderRepository.findAll();
             return orders;
-        } catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
 
     }
+
     @RabbitListener(queues = "AddOrder")
-    public Boolean addOrder(Order order){
+    public Boolean addOrder(Order order) {
         try {
             orderRepository.save(order);
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
+    public Boolean updateStatus(Order order) {
+        try {
+            orderRepository.save(order);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
+

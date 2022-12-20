@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -39,5 +40,20 @@ public class OrderController {
                 dateStart,dateEnd,location,totalPrice,"Pending",user_name, user_mail));
         rabbitTemplate.convertSendAndReceive("OrderDirectExchange","addOrder",carId);
         return ResponseEntity.ok(status);
+    }
+
+    @PutMapping("/updateStatus/{_id}/{status_check}")
+    public boolean updateCar(@PathVariable("_id") String _id,@PathVariable("status_check") String status_check) throws IOException {
+        List<Order> orders = orderService.getAllOrders();
+        for (Order order : orders) {
+            if (order.get_id().equals(_id)) {
+                 orderService.addOrder(new Order(_id,order.getCarId(),order.getTimeStart(),order.getTimeEnd(),
+                        order.getDateStart(),order.getDateEnd(),order.getLocation(),order.getTotalPrice(),status_check,order.getUser_name(), order.getUser_mail()));
+                return true;
+            }
+        }
+
+
+        return true;
     }
 }
