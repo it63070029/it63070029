@@ -18,10 +18,10 @@ public class OrderController {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @GetMapping("/getAllOrder")
+    @GetMapping("/getAllOrders")
     public ResponseEntity<?> getAllOrder(){
-        List<Order> order = orderService.getAllOrders();
-        return  ResponseEntity.ok(order);
+        List<Order> orders = orderService.getAllOrders();
+        return  ResponseEntity.ok(orders);
     }
     @PostMapping("/addOrder")
     public ResponseEntity<?> addOrder(@RequestParam("carId") String carId

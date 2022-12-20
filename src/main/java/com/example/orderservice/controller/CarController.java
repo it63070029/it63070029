@@ -28,15 +28,6 @@ public class CarController {
 
     @PutMapping("/updateQuantity/{carId}")
     public boolean updateCar(@PathVariable("carId") String carId) throws IOException {
-
-//        for (Car car : cars) {
-//            if (car.get_id().equals(carId)) {
-//                carService.updateQuantityCar(new Car(car.get_id(), car.getType(), car.getBrand(), car.getModel(), car.getNumOfSeat(), car.getPrice(), car.getQuantity() - 1, car.getImage()));
-//                rabbitTemplate.convertSendAndReceive("OrderDirectExchange", "update",carId );
-//                return true;
-//            }
-//
-//        }
         List<Car> cars = carService.getAllCars();
         for (Car car : cars) {
             if (car.get_id().equals(carId)) {

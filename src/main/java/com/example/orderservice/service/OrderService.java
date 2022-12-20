@@ -15,11 +15,11 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+
     public OrderService(OrderRepository orderRepository){
         this.orderRepository=orderRepository;
     }
+
     public List<Order> getAllOrders(){
         try{
             List<Order> orders = orderRepository.findAll();

@@ -12,33 +12,19 @@ import java.util.Timer;
 public class Order {
     @Id
     private String _id;
-    //Car
-//    private String type;
-//    private String brand;
-//    private String model;
-//    private int numOfSeat;
-//    private int price;
-//    private int quantity;
     private String carId;
-
     private String timeStart;
     private String timeEnd;
     private String dateStart;
     private String dateEnd;
     private String location;
-//    private Integer amountDay;
     private Integer totalPrice;
     private String status_check;
     private String user_name;
     private String user_mail;
-//    private String user_tel;
-
-    public Order(String _id, String carId) {
-        this._id = _id;
-        this.carId = carId;
-    }
 
 
+    public Order() {}
     public Order(String _id, String carId, String timeStart, String timeEnd, String dateStart, String dateEnd, String location, Integer totalPrice, String status_check, String user_name, String user_mail) {
         this._id = _id;
         this.carId = carId;
@@ -47,12 +33,12 @@ public class Order {
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.location = location;
-//        this.amountDay = amountDay;
+
         this.totalPrice = totalPrice;
         this.status_check = status_check;
         this.user_name = user_name;
         this.user_mail = user_mail;
-//        this.user_tel = user_tel;
+
     }
 
     public String get_id() {
@@ -145,11 +131,5 @@ public class Order {
         this.user_mail = user_mail;
     }
 
-//    public String getUser_tel() {
-//        return user_tel;
-//    }
-//
-//    public void setUser_tel(String user_tel) {
-//        this.user_tel = user_tel;
-//    }
+
 }
