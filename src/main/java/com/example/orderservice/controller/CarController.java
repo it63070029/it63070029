@@ -27,7 +27,7 @@ public class CarController {
     }
 
     @PutMapping("/updateQuantity/{carId}")
-    public boolean updateCar(@PathVariable("carId") String carId) throws IOException {
+    public boolean updateQuantityCar(@PathVariable("carId") String carId) throws IOException {
         List<Car> cars = carService.getAllCars();
         for (Car car : cars) {
             if (car.get_id().equals(carId)) {
